@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View and filter the faculty exam report.">
+    <title>Exam Registration | Faculty Report</title>
+    <link rel="icon" type="image/png" href="images/LOGO.png">
+    <link rel="stylesheet" href="css/base.css?v=5">
+    <link rel="stylesheet" href="css/examReport.css?v=5">
+    <script src="data/exams.js?v=2" defer></script>
+    <script src="js/app.js?v=20" defer></script>
+</head>
+<body data-page="faculty-report">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header>
+        <nav aria-label="Primary navigation">
+            <a class="logo" href="index.html" aria-label="Exam Registration home">
+                <img src="images/logo_0_0.webp" alt="">
+                <span>Exam Registration</span>
+            </a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span aria-hidden="true">&#9776;</span>
+            </button>
+            <ul class="navbar" id="primary-menu"></ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="report-box" aria-labelledby="report-heading">
+            <h1 id="report-heading">Registered Exam Report</h1>
+            <form id="report-filters" class="filter-form">
+                <div class="form-group">
+                    <label for="start-date">Start date</label>
+                    <input type="date" id="start-date" name="startDate">
+                </div>
+                <div class="form-group">
+                    <label for="end-date">End date</label>
+                    <input type="date" id="end-date" name="endDate">
+                </div>
+                <div class="form-group">
+                    <label for="report-exam-type">Exam Type</label>
+                    <select id="report-exam-type" name="examType">
+                        <option value="">All exam types</option>
+                        <option value="quiz">Quiz</option>
+                        <option value="midterm">Midterm</option>
+                        <option value="final">Final</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-filter" type="reset">Clear Filters</button>
+                    <button class="btn print-btn" type="button" id="print-report">
+                        Print All Registrations
+                    </button>
+                </div>
+            </form>
+
+            <p id="report-summary" aria-live="polite"></p>
+            <p id="print-generated" class="print-generated"></p>
+            <div class="exam-report-table-wrapper">
+                <table class="exam-report-table">
+                    <caption class="sr-only">Exam registration report</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Student Name</th>
+                            <th scope="col">Exam</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Proctor</th>
+                        </tr>
+                    </thead>
+                    <tbody id="report-list"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            &copy; 2026 Exam Registration. All rights reserved. |
+            <a href="https://github.com/Javicshz/CIT_260_CSN_Exam_Website" target="_blank" rel="noopener noreferrer">
+                GitHub Repository
+            </a>
+        </p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Review exam details and select an appointment time.">
+    <title>Exam Registration | Exam Details</title>
+    <link rel="icon" type="image/png" href="images/LOGO.png">
+    <link rel="stylesheet" href="css/base.css?v=5">
+    <link rel="stylesheet" href="css/exam_detail.css?v=3">
+    <script src="data/exams.js?v=2" defer></script>
+    <script src="js/app.js?v=20" defer></script>
+</head>
+<body data-page="exam-details">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header>
+        <nav aria-label="Primary navigation">
+            <a class="logo" href="index.html" aria-label="Exam Registration home">
+                <img src="images/logo_0_0.webp" alt="">
+                <span>Exam Registration</span>
+            </a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span aria-hidden="true">&#9776;</span>
+            </button>
+            <ul class="navbar" id="primary-menu"></ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <a href="exams.html" class="back-button">&#8592; Back to Exams</a>
+
+        <article class="container" aria-labelledby="exam-name">
+            <h1 id="exam-name">Exam Details</h1>
+            <dl class="exam-details-list">
+                <div><dt>Teacher</dt><dd id="exam-instructor"></dd></div>
+                <div><dt>Location</dt><dd id="exam-location"></dd></div>
+                <div><dt>Room</dt><dd id="exam-room"></dd></div>
+                <div><dt>Type</dt><dd id="exam-type"></dd></div>
+                <div><dt>Capacity</dt><dd id="exam-capacity"></dd></div>
+            </dl>
+
+            <form id="registration-form">
+                <h2>Register for This Exam</h2>
+                <div class="form-group">
+                    <label for="selected-date">Select a Date</label>
+                    <input type="date" id="selected-date" name="selectedDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="selected-time">Select a Time</label>
+                    <select id="selected-time" name="selectedTime" required>
+                        <option value="">Choose a time</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Register for This Exam</button>
+                <p id="registration-message" role="status" aria-live="polite"></p>
+            </form>
+        </article>
+    </main>
+
+    <footer>
+        <p>
+            &copy; 2026 Exam Registration. All rights reserved. For demonstration purposes only. |
+            <a href="https://github.com/Javicshz/CIT_260_CSN_Exam_Website" target="_blank" rel="noopener noreferrer">
+                GitHub Repository
+            </a>
+        </p>
+    </footer>
+</body>
+</html>

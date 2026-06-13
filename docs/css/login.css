@@ -1,0 +1,100 @@
+.login-main {
+    flex: 1;
+    width: 100%;
+    padding: 125px 1rem 2rem;
+}
+
+.login-card {
+    max-width: 520px;
+    padding: 2rem;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: var(--csn-beige);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-card h1,
+.login-card h2 {
+    color: var(--csn-blue);
+    text-align: center;
+}
+
+.login-card > p {
+    margin: 0.75rem 0 1.5rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+#login-form .form-group {
+    margin-bottom: 1rem;
+}
+
+#login-form label,
+#login-form input {
+    display: block;
+    width: 100%;
+}
+
+#login-form input {
+    padding: 0.7rem;
+    margin-top: 0.4rem;
+    border: 1px solid #999;
+    border-radius: 5px;
+}
+
+#login-form .btn {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 1.25rem;
+    border: 0;
+    border-radius: 5px;
+    background-color: var(--csn-blue);
+    color: var(--csn-white);
+    cursor: pointer;
+}
+
+#login-form .btn:hover,
+#login-form .btn:focus-visible {
+    background-color: #16376f;
+}
+
+#login-message {
+    min-height: 1.5rem;
+    margin-top: 0.75rem;
+    color: #8b0000;
+    text-align: center;
+}
+
+.test-accounts {
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 2px solid var(--csn-blue);
+}
+
+.test-accounts dl {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.test-accounts dl div {
+    padding: 1rem;
+    border-radius: 6px;
+    background-color: var(--csn-white);
+}
+
+.test-accounts dt {
+    margin-bottom: 0.5rem;
+    color: var(--csn-blue);
+}
+
+.test-accounts dd {
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+@media screen and (max-width: 600px) {
+    .login-card {
+        padding: 1.25rem;
+    }
+}

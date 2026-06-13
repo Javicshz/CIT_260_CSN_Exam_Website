@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse and filter available exam appointments.">
+    <title>Exam Registration | Find Exams</title>
+    <link rel="icon" type="image/png" href="images/LOGO.png">
+    <link rel="stylesheet" href="css/base.css?v=5">
+    <link rel="stylesheet" href="css/filter.css?v=4">
+    <script src="data/exams.js?v=2" defer></script>
+    <script src="js/app.js?v=20" defer></script>
+</head>
+<body data-page="exams">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header>
+        <nav aria-label="Primary navigation">
+            <a class="logo" href="index.html" aria-label="Exam Registration home">
+                <img src="images/logo_0_0.webp" alt="">
+                <span>Exam Registration</span>
+            </a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span aria-hidden="true">&#9776;</span>
+            </button>
+            <ul class="navbar" id="primary-menu"></ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="report-box" aria-labelledby="exam-search-heading">
+            <h1 id="exam-search-heading">Filter Exams</h1>
+            <form id="exam-filters" class="filter-form">
+                <div class="form-group">
+                    <label for="exam-search">Search</label>
+                    <input id="exam-search" name="search" type="search" placeholder="Course or exam name">
+                </div>
+                <div class="form-group">
+                    <label for="location-filter">Location</label>
+                    <select id="location-filter" name="location">
+                        <option value="">All campuses</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="instructor-filter">Teacher</label>
+                    <select id="instructor-filter" name="instructor">
+                        <option value="">All instructors</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="type-filter">Exam Type</label>
+                    <select id="type-filter" name="type">
+                        <option value="">All exam types</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-filter" type="reset">Clear Filters</button>
+                </div>
+            </form>
+
+            <div class="results-heading">
+                <h2>Available Exams</h2>
+                <p id="results-count" aria-live="polite"></p>
+            </div>
+            <div id="exam-list" class="exam-report-table-wrapper" aria-live="polite"></div>
+            <p id="no-exams-message" hidden>No exams match the selected filters.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            &copy; 2026 Exam Registration. All rights reserved. |
+            <a href="https://github.com/Javicshz/CIT_260_CSN_Exam_Website" target="_blank" rel="noopener noreferrer">
+                GitHub Repository
+            </a>
+        </p>
+    </footer>
+</body>
+</html>

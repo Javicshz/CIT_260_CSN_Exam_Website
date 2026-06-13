@@ -1,0 +1,102 @@
+.back-button {
+    position: absolute;
+    top: 100px;
+    left: 40px;
+    z-index: 999;
+    padding: 10px 14px;
+    border-radius: 6px;
+    background-color: var(--csn-yellow);
+    color: var(--csn-blue);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+.back-button:hover,
+.back-button:focus-visible {
+    background-color: #e2bd3f;
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 600px;
+    padding: 2rem;
+    margin: 150px auto 2rem;
+    border-radius: 8px;
+    background-color: var(--csn-beige);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.container h1 {
+    margin-bottom: 1rem;
+    color: var(--csn-blue);
+}
+
+.exam-details-list {
+    margin: 1.5rem 0;
+}
+
+.exam-details-list div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+.exam-details-list dt {
+    color: var(--csn-blue);
+}
+
+#registration-form {
+    margin-top: 2rem;
+}
+
+#registration-form .form-group {
+    margin: 1rem 0;
+    text-align: left;
+}
+
+#registration-form label,
+#registration-form input,
+#registration-form select {
+    display: block;
+    width: 100%;
+}
+
+#registration-form input,
+#registration-form select {
+    padding: 0.6rem;
+    margin-top: 0.4rem;
+}
+
+#registration-form .btn {
+    padding: 10px 20px;
+    margin-top: 1.5rem;
+    border: 0;
+    border-radius: 6px;
+    background-color: var(--csn-blue);
+    color: var(--csn-white);
+    cursor: pointer;
+}
+
+#registration-form .btn:hover,
+#registration-form .btn:focus-visible {
+    background-color: #16376f;
+}
+
+#registration-message {
+    min-height: 1.5rem;
+    margin-top: 0.75rem;
+}
+
+@media screen and (max-width: 768px) {
+    .back-button {
+        left: 20px;
+    }
+
+    .container {
+        margin: 160px 1rem 2rem;
+    }
+}

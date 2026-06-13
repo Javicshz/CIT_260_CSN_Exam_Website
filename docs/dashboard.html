@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Review your registered exams.">
+    <title>Exam Registration | Student Dashboard</title>
+    <link rel="icon" type="image/png" href="images/LOGO.png">
+    <link rel="stylesheet" href="css/base.css?v=5">
+    <link rel="stylesheet" href="css/viewExams.css?v=4">
+    <script src="data/exams.js?v=2" defer></script>
+    <script src="js/app.js?v=20" defer></script>
+</head>
+<body data-page="dashboard">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header>
+        <nav aria-label="Primary navigation">
+            <a class="logo" href="index.html" aria-label="Exam Registration home">
+                <img src="images/logo_0_0.webp" alt="">
+                <span>Exam Registration</span>
+            </a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span aria-hidden="true">&#9776;</span>
+            </button>
+            <ul class="navbar" id="primary-menu"></ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="report-box" aria-labelledby="dashboard-heading">
+            <h1 id="dashboard-heading">Your Registered Exams</h1>
+
+            <p id="dashboard-message" role="status" aria-live="polite"></p>
+
+            <div class="exam-report-table-wrapper" id="registration-table-wrapper">
+                <table class="exam-report-table">
+                    <caption class="sr-only">Your exam registrations</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Exam</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Instructor</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="registration-list"></tbody>
+                </table>
+            </div>
+
+            <p id="empty-dashboard" aria-live="polite">
+                You are not currently registered for any exams.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            &copy; 2026 Exam Registration. All rights reserved. |
+            <a href="https://github.com/Javicshz/CIT_260_CSN_Exam_Website" target="_blank" rel="noopener noreferrer">
+                GitHub Repository
+            </a>
+        </p>
+    </footer>
+</body>
+</html>

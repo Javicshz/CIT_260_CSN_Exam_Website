@@ -1,0 +1,188 @@
+main {
+    flex: 1;
+    width: 95%;
+    padding: calc(85px + 1rem) 1.5rem 1.5rem;
+    margin: 0 auto 2rem;
+    border-radius: 8px;
+    background-color: var(--csn-white);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.report-box {
+    max-width: 1000px;
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 10px;
+    background-color: var(--csn-beige);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-form .form-group:last-child {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.filter-form label {
+    margin-bottom: 0.3rem;
+    color: var(--csn-blue);
+}
+
+.filter-form input,
+.filter-form select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.95rem;
+}
+
+.filter-form .btn {
+    min-width: 130px;
+    padding: 10px 15px;
+    border: 0;
+    border-radius: 5px;
+    background-color: var(--csn-yellow);
+    color: #000;
+    cursor: pointer;
+}
+
+.filter-form .btn:hover,
+.filter-form .btn:focus-visible {
+    background-color: #e2bd3f;
+}
+
+.exam-report-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.exam-report-table {
+    width: 100%;
+    margin-top: 1.5rem;
+    border: 1px solid #000;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px;
+    background-color: var(--csn-blue);
+    font-size: 0.95rem;
+    overflow: hidden;
+}
+
+.exam-report-table th,
+.exam-report-table td {
+    padding: 12px 16px;
+    border: 1px solid #000;
+    text-align: left;
+}
+
+.exam-report-table th {
+    background-color: var(--csn-blue);
+    color: var(--csn-white);
+}
+
+.exam-report-table td {
+    background-color: var(--csn-white);
+    color: #000;
+}
+
+.print-generated {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        padding: calc(85px + 1rem) 1rem 1rem;
+    }
+
+    .report-box {
+        padding: 1rem;
+    }
+
+    .filter-form .form-group:last-child {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media print {
+    body {
+        display: block;
+        background: #fff;
+        color: #000;
+    }
+
+    main,
+    .report-box {
+        display: block;
+        width: 100%;
+        max-width: none;
+        padding: 0;
+        margin: 0;
+        background: #fff;
+        box-shadow: none;
+    }
+
+    .exam-report-table-wrapper {
+        overflow: visible;
+    }
+
+    .exam-report-table {
+        border-collapse: collapse;
+        margin-top: 1rem;
+        background: #fff;
+        font-size: 9pt;
+    }
+
+    .exam-report-table th,
+    .exam-report-table td {
+        padding: 5px;
+        border: 1px solid #000;
+        background: #fff;
+        color: #000;
+    }
+
+    .exam-report-table th {
+        background: #eee;
+    }
+
+    h1 {
+        margin-bottom: 0.15in;
+        font-size: 18pt;
+        text-align: center;
+    }
+
+    #report-summary,
+    .print-generated {
+        display: block;
+        margin-bottom: 0.1in;
+        font-size: 10pt;
+        text-align: center;
+    }
+
+    header,
+    footer,
+    .filter-form {
+        display: none !important;
+    }
+
+    @page {
+        margin: 0.75in;
+    }
+}
