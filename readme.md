@@ -9,6 +9,8 @@ The purpose of the website is to allow students to view and register for exams. 
 
 The aesthetic design of the webpage was indented to resemble the design of the https://www.csn.edu/ website page.
 
+https://javicshz.github.io/CIT_260_CSN_Exam_Website/
+
 ## Files
 
 The main folder contains two folders:

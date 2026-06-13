@@ -67,6 +67,7 @@ function isFaculty() {
 
 function checkPageAccess() {
     const page = document.body.dataset.page;
+    const publicPages = ["home", "exams", "exam-details"];
 
     if (page === "login") {
         if (currentUser) {
@@ -80,6 +81,10 @@ function checkPageAccess() {
         return true;
     }
 
+    if (publicPages.includes(page)) {
+        return true;
+    }
+
     if (!currentUser) {
         const returnTo = `${getCurrentPage()}${globalThis.location.search}`;
         globalThis.location.replace(
@@ -88,9 +93,7 @@ function checkPageAccess() {
         return false;
     }
 
-    const studentPages = ["exams", "exam-details", "dashboard"];
-
-    if (isFaculty() && studentPages.includes(page)) {
+    if (isFaculty() && page === "dashboard") {
         globalThis.location.replace("faculty-report.html");
         return false;
     }
@@ -128,7 +131,7 @@ function createLogoutButton() {
 
     button.addEventListener("click", () => {
         localStorage.removeItem(CURRENT_USER_KEY);
-        globalThis.location.href = "login.html";
+        globalThis.location.href = "index.html";
     });
 
     listItem.appendChild(button);
@@ -147,7 +150,19 @@ function updateNavigation() {
         createNavigationLink("Home", "index.html", ["index.html"])
     );
 
-    if (isFaculty()) {
+    navigation.appendChild(
+        createNavigationLink(
+            "Schedule an Exam",
+            "exams.html",
+            ["exams.html", "exam-details.html"]
+        )
+    );
+
+    if (!currentUser) {
+        navigation.appendChild(
+            createNavigationLink("Log In", "login.html", ["login.html"])
+        );
+    } else if (isFaculty()) {
         navigation.appendChild(
             createNavigationLink(
                 "Faculty Reports",
@@ -155,14 +170,8 @@ function updateNavigation() {
                 ["faculty-report.html"]
             )
         );
+        navigation.appendChild(createLogoutButton());
     } else {
-        navigation.appendChild(
-            createNavigationLink(
-                "Schedule an Exam",
-                "exams.html",
-                ["exams.html", "exam-details.html"]
-            )
-        );
         navigation.appendChild(
             createNavigationLink(
                 "View My Exams",
@@ -170,9 +179,8 @@ function updateNavigation() {
                 ["dashboard.html"]
             )
         );
+        navigation.appendChild(createLogoutButton());
     }
-
-    navigation.appendChild(createLogoutButton());
 }
 
 function setupMobileMenu() {
@@ -273,14 +281,17 @@ function setupLoginPage() {
 
         const parameters = new URLSearchParams(globalThis.location.search);
         const returnTo = parameters.get("returnTo");
+        const returnPage = returnTo ? returnTo.split("?")[0] : "";
+        const allowedReturnPages = [
+            "index.html",
+            "exams.html",
+            "exam-details.html",
+            "dashboard.html"
+        ];
 
         if (isFaculty()) {
             globalThis.location.href = "faculty-report.html";
-        } else if (
-            returnTo &&
-            !returnTo.includes("://") &&
-            !returnTo.startsWith("//")
-        ) {
+        } else if (allowedReturnPages.includes(returnPage)) {
             globalThis.location.href = returnTo;
         } else {
             globalThis.location.href = "index.html";
@@ -289,16 +300,26 @@ function setupLoginPage() {
 }
 
 function setupHomePage() {
-    if (!isFaculty()) {
+    if (currentUser && !isFaculty()) {
         return;
     }
 
     const actions = document.querySelector(".primary-actions");
 
     actions.textContent = "";
-    actions.appendChild(
-        createNavigationLink("View Faculty Reports", "faculty-report.html")
-    );
+
+    if (isFaculty()) {
+        actions.appendChild(
+            createNavigationLink("View Faculty Reports", "faculty-report.html")
+        );
+    } else {
+        actions.appendChild(
+            createNavigationLink("View Exams", "exams.html")
+        );
+        actions.appendChild(
+            createNavigationLink("Log In", "login.html")
+        );
+    }
 }
 
 function addOption(selectElement, value) {
@@ -441,6 +462,20 @@ function setupExamDetailsPage() {
 
     registrationForm.addEventListener("submit", (event) => {
         event.preventDefault();
+
+        if (!currentUser) {
+            const returnTo =
+                `${getCurrentPage()}${globalThis.location.search}`;
+            globalThis.location.href =
+                `login.html?returnTo=${encodeURIComponent(returnTo)}`;
+            return;
+        }
+
+        if (isFaculty()) {
+            registrationMessage.textContent =
+                "Registration requires a student account.";
+            return;
+        }
 
         const userRegistrations = getCurrentUserRegistrations();
         const alreadyRegistered = userRegistrations.some((registration) => {
